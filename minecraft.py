@@ -3,7 +3,7 @@ import subprocess
 import sqlite3
 import time
 import threading
-import mine_socket
+import minesocket
 
 
 class MinecraftServer(object):
@@ -19,7 +19,7 @@ class MinecraftServer(object):
 
     def start(self):
         self.server = self.start_server()
-        self.inp = mine_socket.InputServer(self.server.stdin, ("localhost", 1337))
+        self.inp = minesocket.InputServer(self.server.stdin, ("localhost", 1337))
         self.err = WriteThread(self.server.stderr, None)
         self.err.start()
         self.inp.run()
